@@ -1,5 +1,10 @@
 <?php
 
+/**
+* The MIT License
+* Copyright (c) 2018 MazaiCrafty
+*/
+
 namespace mazaicrafty\sm;
 
 use pocketmine\plugin\PluginBase;
@@ -84,5 +89,7 @@ class SoundModuleAPI extends PluginBase{
 
             case 'GenericSound':
             return new GenericSound($pos, $id, $pitch);
+        }
     }
 }
+
