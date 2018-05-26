@@ -16,11 +16,12 @@ class Sound{
     const CLICK = 6;
     const DOOR_BUMP = 7;
     const DOOR_CRASH = 8;
-    const ENDERMAN_TELEPORT = 9;
-    const FIZZ = 10;
-    const GHAST_SHOOT = 11;
-    const GHAST = 12;
-    const LAUNCH = 13;
-    const POP = 14;
-    const GENERIC = 15;
+    const DOOR = 9;
+    const ENDERMAN_TELEPORT = 10;
+    const FIZZ = 11;
+    const GHAST_SHOOT = 12;
+    const GHAST = 13;
+    const LAUNCH = 14;
+    const POP = 15;
+    const GENERIC = 16;
 }
