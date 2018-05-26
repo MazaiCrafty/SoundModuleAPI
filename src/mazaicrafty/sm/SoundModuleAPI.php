@@ -37,7 +37,7 @@ class SoundModuleAPI extends PluginBase{
     }
     
     private static $sounds = [];
-    public static function registerSounds() {
+    public static function registerSounds(){
         SoundModuleAPI::$sounds[Sound::ANVIL_BREAK] = AnvilBreakSound::class;
         SoundModuleAPI::$sounds[Sound::ANVIL_FALL] = AnvilFallSound::class;
         SoundModuleAPI::$sounds[Sound::ANVIL_USE] = AnvilUseSound::class;
@@ -57,7 +57,7 @@ class SoundModuleAPI extends PluginBase{
     }
     
     public static function createSoundToPlayer($sound, Player $player, float $pitch = 0, int $id = null){
-        $result = self::createSound($sound, new Vector3($player->getX(), $player->getY(), $player->getZ()), $pitch, $id);
+        $result = SoundModuleAPI::createSound($sound, new Vector3($player->getX(), $player->getY(), $player->getZ()), $pitch, $id);
         return $result;
     }
     
@@ -66,11 +66,11 @@ class SoundModuleAPI extends PluginBase{
     * @param Vector3 $pos
     * @param float $pitch = 0
     * @param int $id = null
-    * @return new $sound($pos)
+    * @return new $sound_class
     */
     public static function createSound($sound, Vector3 $pos, float $pitch = 0, int $id = null){
         $sound_class = SoundModuleAPI::$sounds[$sound];
-        if($sound == Sound::GENERIC) { // Genericのみid;
+        if($sound == Sound::GENERIC){
             return new $sound_class($pos, $id, $pitch);
         }
         
