@@ -8,7 +8,7 @@ use mazaicrafty\sm\SoundModuleAPI;
 
 #### サウンドのインスタンスを生成
 ```php
-// Position $pos
+// Vector3 $pos
 $sound = SoundModuleAPI::createSound(/*'サウンドの名前'*/, $pos);
 ```
 
