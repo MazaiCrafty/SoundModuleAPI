@@ -39,7 +39,7 @@ class SoundModuleAPI extends PluginBase{
     private static $sounds = [];
     public static function registerSounds() {
         SoundModuleAPI::$sounds[Sound::ANVIL_BREAK] = AnvilBreakSound::class;
-        SoundModuleAPI::$sounds[Sound::ANVIL_FALL] = AnvilFallSound:class;
+        SoundModuleAPI::$sounds[Sound::ANVIL_FALL] = AnvilFallSound::class;
         SoundModuleAPI::$sounds[Sound::ANVIL_USE] = AnvilUseSound::class;
         SoundModuleAPI::$sounds[Sound::BAT] = BatSound::class;
         SoundModuleAPI::$sounds[Sound::BLAZESHOOT] = BlazeShootSound::class;
