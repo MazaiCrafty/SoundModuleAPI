@@ -36,6 +36,26 @@ class SoundModuleAPI extends PluginBase{
         $this->getLogger()->info("SoundModuleAPI was enabled...");
     }
     
+    private static $sounds = [];
+    public static function registerSounds() {
+        SoundModuleAPI::$sounds[Sound::ANVIL_BREAK] = AnvilBreakSound::class;
+        SoundModuleAPI::$sounds[Sound::ANVIL_FALL] = AnvilFallSound:class;
+        SoundModuleAPI::$sounds[Sound::ANVIL_USE] = AnvilUseSound::class;
+        SoundModuleAPI::$sounds[Sound::BAT] = BatSound::class;
+        SoundModuleAPI::$sounds[Sound::BLAZESHOOT] = BlazeShootSound::class;
+        SoundModuleAPI::$sounds[Sound::CLICK] = ClickSound::class;
+        SoundModuleAPI::$sounds[Sound::DOOR_BUMP] = DoorBumpSound::class;
+        SoundModuleAPI::$sounds[Sound::DOOR_CRASH] = DoorCrashSound::class;
+        SoundModuleAPI::$sounds[Sound::DOOR] = DoorSound::class;
+        SoundModuleAPI::$sounds[Sound::ENDERMAN_TELEPORT] = EndermanTeleportSound::class;
+        SoundModuleAPI::$sounds[Sound::FIZZ] = FizzSound::class;
+        SoundModuleAPI::$sounds[Sound::GHAST_SHOOT] = GhastShootSound::class;
+        SoundModuleAPI::$sounds[Sound::GHAST] = GhastSound::class;
+        SoundModuleAPI::$sounds[Sound::LAUNCH] = LaunchSound::class;
+        SoundModuleAPI::$sounds[Sound::POP] = PopSound::class;
+        SoundModuleAPI::$sounds[Sound::GENERIC] = GenericSound::class;
+    }
+    
     public static function createSoundToPlayer($sound, Player $player, float $pitch = 0, int $id = null){
         $result = self::createSound($sound, new Vector3($player->getX(), $player->getY(), $player->getZ()), $pitch, $id);
         return $result;
@@ -49,55 +69,12 @@ class SoundModuleAPI extends PluginBase{
     * @return new $sound($pos)
     */
     public static function createSound($sound, Vector3 $pos, float $pitch = 0, int $id = null){
-        switch ($sound){
-            case Sound::ANVIL_BREAK:
-            return new AnvilBreakSound($pos, $pitch);
-
-            case Sound::ANVIL_FALL:
-            return new AnvilFallSound($pos, $pitch);
-
-            case Sound::ANVIL_USE:
-            return new AnvilUseSound($pos, $pitch);
-
-            case Sound::BAT:
-            return new BatSound($pos, $pitch);
-
-            case Sound::BLAZE_SHOOT:
-            return new BlazeShootSound($pos, $pitch);
-
-            case Sound::CLICK:
-            return new ClickSound($pos, $pitch);
-
-            case Sound::DOOR_BUMP:
-            return new DoorBumpSound($pos, $pitch);
-
-            case Sound::DOOR_CRASH:
-            return new DoorCrashSound($pos, $pitch);
-
-            case Sound::DOOR:
-            return new DoorSound($pos, $pitch);
-
-            case Sound::ENDERMAN_TELEPORT:
-            return new EndermanTeleportSound($pos, $pitch);
-
-            case Sound::FIZZ:
-            return new FizzSound($pos, $pitch);
-
-            case Sound::GHAST_SHOOT:
-            return new GhastShootSound($pos, $pitch);
-
-            case Sound::GHAST:
-            return new GhastSound($pos, $pitch);
-
-            case Sound::LAUNCH:
-            return new LaunchSound($pos, $pitch);
-
-            case Sound::POP:
-            return new PopSound($pos, $pitch);
-
-            case Sound::GENERIC:
-            return new GenericSound($pos, $id, $pitch);
+        $sound_class = SoundModuleAPI::$sounds[$sound];
+        if($sound == Sound::GENERIC) { // Genericのみid;
+            return new $sound_class($pos, $id, $pitch);
         }
+        
+        return new $sound_class($pos, $pitch);
     }
 }
 
