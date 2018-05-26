@@ -35,6 +35,7 @@ class SoundModuleAPI extends PluginBase{
 
     public function onEnable(): void{
         $this->getLogger()->info("SoundModuleAPI was enabled...");
+        self::registerSounds();
     }
     
     private static $sounds = [];
