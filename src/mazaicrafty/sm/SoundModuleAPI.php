@@ -10,6 +10,7 @@ namespace mazaicrafty\sm;
 use pocketmine\plugin\PluginBase;
 
 use pocketmine\math\Vector3;
+
 use pocketmine\level\sound\AnvilBreakSound;
 use pocketmine\level\sound\AnvilFallSound;
 use pocketmine\level\sound\AnvilUseSound;
@@ -27,67 +28,73 @@ use pocketmine\level\sound\LaunchSound;
 use pocketmine\level\sound\PopSound;
 use pocketmine\level\sound\GenericSound;
 
+use mazaicrafty\sm\Sound;
+
 class SoundModuleAPI extends PluginBase{
 
     public function onEnable(): void{
         $this->getLogger()->info("SoundModuleAPI was enabled...");
     }
     
+    public static function createSoundToPlayer(Player $player, $sound, float $pitch = 0, int $id = null){
+        self::createSound($sound, new Vector3($player->getX(), $player-getY(), $player->getZ()), $pitch, $id);
+    }
+    
     /**
-    * @param string $sound
+    * @param $sound
     * @param Vector3 $pos
     * @param float $pitch = 0
     * @param int $id = null
     * @return new $sound($pos)
     */
-    public static function createSound(string $sound, Vector3 $pos, float $pitch = 0, int $id = null){
+    public static function createSound($sound, Vector3 $pos, float $pitch = 0, int $id = null){
         switch ($sound){
-            case 'AnvilBreakSound':
+            case Sound::ANVIL_BREAK:
             return new AnvilBreakSound($pos, $pitch);
 
-            case 'AnvilFallSound':
+            case Sound::ANVIL_FALL:
             return new AnvilFallSound($pos, $pitch);
 
-            case 'AnvilUseSound':
+            case Sound::ANVIL_USE:
             return new AnvilUseSound($pos, $pitch);
 
-            case 'BatSound':
+            case Sound::BAT:
             return new BatSound($pos, $pitch);
 
-            case 'BlazeShootSound':
+            case Sound::BLAZE_SHOOT:
             return new BlazeShootSound($pos, $pitch);
 
-            case 'ClickSound':
+            case Sound::CLICK:
             return new ClickSound($pos, $pitch);
 
-            case 'DoorBumpSound':
+            case Sound::DOOR_BUMP:
             return new DoorBumpSound($pos, $pitch);
 
-            case 'DoorCrashSound':
+            case Sound::DOOR_CRASH:
             return new DoorCrashSound($pos, $pitch);
 
-            case 'DoorSound':
+            case Sound::DOOR:
             return new DoorSound($pos, $pitch);
 
-            case 'EndermanTeleportSound':
+            case Sound::ENDERMAN_TELEPORT:
             return new EndermanTeleportSound($pos, $pitch);
 
-            case 'FizzSound':
+            case Sound::FIZZ:
             return new FizzSound($pos, $pitch);
 
-            case 'GhastShootSound':
+            case Sound::GHAST_SHOOT:
             return new GhastShootSound($pos, $pitch);
 
-            case 'GhastSound':
+            case Sound::GHAST:
             return new GhastSound($pos, $pitch);
 
-            case 'LaunchSound':
+            case Sound::LAUNCH:
             return new LaunchSound($pos, $pitch);
 
-            case 'PopSound':
+            case Sound::POP:
             return new PopSound($pos, $pitch);
 
-            case 'GenericSound':
+            case Sound::GENERIC:
             return new GenericSound($pos, $id, $pitch);
         }
     }
