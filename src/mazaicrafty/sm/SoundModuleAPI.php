@@ -36,8 +36,9 @@ class SoundModuleAPI extends PluginBase{
         $this->getLogger()->info("SoundModuleAPI was enabled...");
     }
     
-    public static function createSoundToPlayer(Player $player, $sound, float $pitch = 0, int $id = null){
-        self::createSound($sound, new Vector3($player->getX(), $player-getY(), $player->getZ()), $pitch, $id);
+    public static function createSoundToPlayer($sound, Player $player, float $pitch = 0, int $id = null){
+        $result = self::createSound($sound, new Vector3($player->getX(), $player-getY(), $player->getZ()), $pitch, $id);
+        return $result;
     }
     
     /**
