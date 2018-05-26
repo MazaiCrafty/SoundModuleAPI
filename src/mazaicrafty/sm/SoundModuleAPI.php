@@ -4,7 +4,7 @@ namespace mazaicrafty\sm;
 
 use pocketmine\plugin\PluginBase;
 
-use pocketmine\level\Position;
+use pocketmine\math\Vector3;
 use pocketmine\level\sound\AnvilBreakSound;
 use pocketmine\level\sound\AnvilFallSound;
 use pocketmine\level\sound\AnvilUseSound;
@@ -35,7 +35,7 @@ class SoundModuleAPI extends PluginBase{
     * @param int $id = null
     * @return new $sound($pos)
     */
-    public static function createSound(string $sound, Position $pos, float $pitch = 0, int $id = null){
+    public static function createSound(string $sound, Vector3 $pos, float $pitch = 0, int $id = null){
         switch ($sound){
             case 'AnvilBreakSound':
             return new AnvilBreakSound($pos, $pitch);
