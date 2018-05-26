@@ -28,9 +28,9 @@ use pocketmine\level\sound\LaunchSound;
 use pocketmine\level\sound\PopSound;
 use pocketmine\level\sound\GenericSound;
 
-use mazaicrafty\sm\Sound;
-
 class SoundModuleAPI extends PluginBase{
+    
+    use mazaicrafty\sm\Sound;
 
     public function onEnable(): void{
         $this->getLogger()->info("SoundModuleAPI was enabled...");
