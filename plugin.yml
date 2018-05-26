@@ -1,0 +1,9 @@
+name: SoundModuleAPI
+main: mazaicrafty\sm\SoundModuleAPI
+author: MazaiCrafty
+version: 1.0
+api:
+ - 3.0.0-ALPHA11
+ - 3.0.0-ALPHA12
+load: POSTWORLD
+website: https://github.com/MazaiCrafty/SoundModuleAPI
