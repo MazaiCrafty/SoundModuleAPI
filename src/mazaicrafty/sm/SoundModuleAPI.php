@@ -8,6 +8,7 @@
 namespace mazaicrafty\sm;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\Player;
 
 use pocketmine\math\Vector3;
 
