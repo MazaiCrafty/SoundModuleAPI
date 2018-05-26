@@ -30,7 +30,7 @@ class SoundModuleAPI extends PluginBase{
     
     /**
     * @param string $sound
-    * @param Position $pos
+    * @param Vector3 $pos
     * @param float $pitch = 0
     * @param int $id = null
     * @return new $sound($pos)
